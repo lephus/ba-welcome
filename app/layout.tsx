@@ -1,13 +1,13 @@
-import AppProvider from "@/config/app-provider";
+// import AppProvider from "@/config/app-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import './globals.css';
+import "./globals.css";
 
 export const metadata = {
-  title: 'BAWS - Business Analysis Workspace',
-  description: 'BAWS Frontend',
+  title: "BAWS - Business Analysis Workspace",
+  description: "BAWS Frontend",
 };
 
 export default function RootLayout({
@@ -24,13 +24,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AppProvider>
-            <TooltipProvider>
-              {children}
-              <ThemeToggle />
-            </TooltipProvider>
-            <Toaster />
-          </AppProvider>
+          {/* <AppProvider> */}
+          <TooltipProvider>
+            {children}
+            <ThemeToggle />
+          </TooltipProvider>
+          <Toaster />
+          {/* </AppProvider> */}
         </ThemeProvider>
       </body>
     </html>
