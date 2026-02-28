@@ -54,7 +54,7 @@ export const SEO_IOC = {
     type: "website" as const,
     locale: "en_US",
     siteName: "BAWS - Business Analysis Workspace",
-    image: "/public/og-image.png",
+    image: "/og-image.png",
     imageWidth: 1200,
     imageHeight: 630,
     imageAlt: "BAWS - Business Analysis Workspace",
