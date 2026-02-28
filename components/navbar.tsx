@@ -80,7 +80,11 @@ export function Navbar() {
           {/* <Button variant="ghost" size="sm">
             Sign in
           </Button> */}
-          <Button size="sm">Get Started</Button>
+          <Button size="sm" asChild>
+            <a href="https://github.com/lephus/ba-workspace" target="_blank" rel="noopener noreferrer">
+              Get Started
+            </a>
+          </Button>
         </div>
         <button
           className="md:hidden"
