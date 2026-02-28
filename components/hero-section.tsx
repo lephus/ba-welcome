@@ -316,15 +316,24 @@ export function HeroSection() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" className="w-full sm:w-auto">
-              Get started
+              <a href="https://github.com/lephus/ba-workspace" target="_blank" rel="noopener noreferrer">
+                Get started
+              </a>
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="w-full sm:w-auto bg-transparent"
+              asChild
             >
-              View documentation
+              <a
+                href="https://github.com/lephus/ba-workspace"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View documentation
+              </a>
             </Button>
           </div>
         </div>

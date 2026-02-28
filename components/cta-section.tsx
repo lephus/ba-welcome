@@ -32,16 +32,33 @@ export function CTASection() {
             AI-powered document analysis. Start your free workspace today.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="w-full sm:w-auto">
-              Start free workspace
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button
+              size="lg"
+              className="w-full sm:w-auto"
+              asChild
+            >
+              <a
+                href="https://github.com/lephus/ba-workspace"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Start free workspace
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="w-full sm:w-auto bg-transparent"
+              asChild
             >
-              View documentation
+              <a
+                href="https://github.com/lephus/ba-workspace"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View documentation
+              </a>
             </Button>
           </div>
         </div>
