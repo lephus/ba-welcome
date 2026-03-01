@@ -138,10 +138,9 @@ export function EnterpriseSection() {
             Talk to our team to learn how BA Workspace can streamline your
             enterprise requirements management.
           </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button size="lg">Contact Us</Button>
-            <Button size="lg" variant="outline">
-              Book a Demo
+          <div className="mt-8 flex justify-center">
+            <Button size="lg" asChild>
+              <a href="mailto:hoang@businessanalysis.io">Contact Us</a>
             </Button>
           </div>
         </div>

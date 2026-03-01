@@ -44,35 +44,14 @@ export function Navbar() {
               onClick={(e) => handleSmoothScroll(e, "#features")}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
-              Features
+              Vision
             </a>
             <a
-              href="#ai-agents"
-              onClick={(e) => handleSmoothScroll(e, "#ai-agents")}
+              href="#personas"
+              onClick={(e) => handleSmoothScroll(e, "#personas")}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
-              AI Agents
-            </a>
-            <a
-              href="#how-it-works"
-              onClick={(e) => handleSmoothScroll(e, "#how-it-works")}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
-            >
-              How It Works
-            </a>
-            <a
-              href="#resources"
-              onClick={(e) => handleSmoothScroll(e, "#resources")}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
-            >
-              Resources
-            </a>
-            <a
-              href="#enterprise"
-              onClick={(e) => handleSmoothScroll(e, "#enterprise")}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
-            >
-              Enterprise
+              Personas
             </a>
           </nav>
         </div>
@@ -102,35 +81,14 @@ export function Navbar() {
               onClick={(e) => handleSmoothScroll(e, "#features")}
               className="text-sm text-muted-foreground cursor-pointer"
             >
-              Features
+              Vision
             </a>
             <a
-              href="#ai-agents"
-              onClick={(e) => handleSmoothScroll(e, "#ai-agents")}
+              href="#personas"
+              onClick={(e) => handleSmoothScroll(e, "#personas")}
               className="text-sm text-muted-foreground cursor-pointer"
             >
-              AI Agents
-            </a>
-            <a
-              href="#how-it-works"
-              onClick={(e) => handleSmoothScroll(e, "#how-it-works")}
-              className="text-sm text-muted-foreground cursor-pointer"
-            >
-              How It Works
-            </a>
-            <a
-              href="#resources"
-              onClick={(e) => handleSmoothScroll(e, "#resources")}
-              className="text-sm text-muted-foreground cursor-pointer"
-            >
-              Resources
-            </a>
-            <a
-              href="#enterprise"
-              onClick={(e) => handleSmoothScroll(e, "#enterprise")}
-              className="text-sm text-muted-foreground cursor-pointer"
-            >
-              Enterprise
+              Personas
             </a>
             <div className="flex flex-col gap-2 pt-4">
               {/* <Button variant="ghost" size="sm">

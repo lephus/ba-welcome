@@ -1,183 +1,140 @@
-"use client";
+import { CheckCircle2, XCircle, Compass } from "lucide-react";
 
-import type React from "react";
+const goals = [
+  {
+    number: 1,
+    title: "Clear navigation",
+    description: "Find any BA artifact in ≤3 clicks.",
+  },
+  {
+    number: 2,
+    title: "Automatic traceability",
+    description: "RTM generates itself, no manual linking.",
+  },
+  {
+    number: 3,
+    title: "Deliverable validation",
+    description: "AI catches defects before human review.",
+  },
+  {
+    number: 4,
+    title: "Knowledge reuse",
+    description: "Patterns and templates learned from past projects.",
+  },
+  {
+    number: 5,
+    title: "Collaboration clarity",
+    description: "Everyone sees the same truth, no version confusion.",
+  },
+];
 
-import {
-  FileSearch,
-  Zap,
-  Shield,
-  GitBranch,
-  Globe,
-  Brain,
-  MessagesSquare,
-  Layers,
-  Sparkles,
-} from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-
-const features = [
+const nonGoals = [
   {
-    icon: Brain,
-    title: "Multi-agent AI analysis",
-    description:
-      "5 specialized AI agents work together to analyze requirements, stakeholders, compliance, and traceability.",
+    number: 1,
+    title: "Full project management",
+    description: "No Gantt, EVM, or resource allocation.",
   },
   {
-    icon: FileSearch,
-    title: "Smart document parsing",
-    description:
-      "Upload PDF, DOCX, or TXT files. AI extracts key information, summaries, and keywords automatically.",
+    number: 2,
+    title: "Enterprise system integrations",
+    description: "Focus on document import/export only.",
   },
   {
-    icon: Zap,
-    title: "Instant RAG pipeline",
-    description:
-      "Documents are processed through a Retrieval-Augmented Generation pipeline for context-aware AI responses.",
+    number: 3,
+    title: "Real-time co-editing",
+    description: "Asynchronous collaboration is sufficient.",
   },
   {
-    icon: GitBranch,
-    title: "Full traceability",
-    description:
-      "Track requirements from stakeholder needs to deliverables. Never lose a dependency or requirement link.",
+    number: 4,
+    title: "Custom AI agent creation",
+    description: "Predefined BA agents only.",
   },
   {
-    icon: Shield,
-    title: "BABOK compliance checks",
-    description:
-      "Automated validation against BABOK standards ensures your documentation meets industry best practices.",
-  },
-  {
-    icon: MessagesSquare,
-    title: "AI-powered conversations",
-    description:
-      "Chat with specialized AI agents about your documents. Get insights, find gaps, and validate requirements.",
-  },
-  {
-    icon: Globe,
-    title: "Stakeholder mapping",
-    description:
-      "Automatically identify stakeholders and map their needs to requirements with gap analysis.",
-  },
-  {
-    icon: Layers,
-    title: "Knowledge graph",
-    description:
-      "Build a living, traceable knowledge graph from scattered documents, conversations, and decisions.",
+    number: 5,
+    title: "Advanced BPMN simulation",
+    description: "Validation only, not execution.",
   },
 ];
 
 export function FeaturesSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let animationId: number;
-    let scrollPosition = scrollContainer.scrollLeft;
-
-    const animate = () => {
-      if (!isPaused && !isDragging && scrollContainer) {
-        scrollPosition += 0.5;
-        if (scrollPosition >= scrollContainer.scrollWidth / 2) {
-          scrollPosition = 0;
-        }
-        scrollContainer.scrollLeft = scrollPosition;
-      } else if (scrollContainer) {
-        scrollPosition = scrollContainer.scrollLeft;
-      }
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animationId);
-  }, [isPaused, isDragging]);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-    setIsDragging(true);
-    setStartX(e.pageX - scrollContainer.offsetLeft);
-    setScrollLeft(scrollContainer.scrollLeft);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-    const x = e.pageX - scrollContainer.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollContainer.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-    setIsPaused(false);
-  };
-
-  const duplicatedFeatures = [...features, ...features];
-
   return (
-    <section id="features" className="py-24 sm:py-24">
+    <section id="features" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
+        {/* Header */}
+        <div className="mx-auto max-w-2xl text-center">
           <div className="flex items-center justify-center gap-2 text-sm text-accent">
-            <Sparkles className="h-4 w-4" />
-            <span className="font-mono uppercase tracking-wider">
-              Built for Business Analysts
-            </span>
+            <Compass className="h-4 w-4" />
+            <span className="font-mono uppercase tracking-wider">Vision</span>
           </div>
           <h2 className="mt-4 font-mono text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Everything you need to manage requirements
+            Goals & Non-Goals
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            BA Workspace combines AI agents, document analysis, and traceability
-            tools so you can focus on delivering business value.
+          <p className="mt-4 text-muted-foreground">
+            A clear scope keeps the product focused. Here's exactly what BA
+            Workspace sets out to solve — and what it intentionally leaves out
+            for MVP.
           </p>
         </div>
 
-        <div className="mt-16 relative">
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+        {/* Two-column grid */}
+        <div className="mt-16 grid gap-6 lg:grid-cols-2">
+          {/* Goals */}
+          <div className="rounded-2xl border border-green-500/20 bg-[#141414] overflow-hidden">
+            <div className="flex items-center gap-3 border-b border-green-500/20 bg-green-500/5 px-6 py-4">
+              <CheckCircle2 className="h-5 w-5 text-green-400" />
+              <h3 className="font-mono text-sm font-semibold text-green-400 uppercase tracking-wider">
+                Goals
+              </h3>
+            </div>
+            <ul className="divide-y divide-border/40">
+              {goals.map((goal) => (
+                <li key={goal.number} className="flex items-start gap-4 px-6 py-5">
+                  <span className="font-mono text-xs font-bold text-green-500/50 mt-0.5 w-4 shrink-0">
+                    {goal.number}
+                  </span>
+                  <div>
+                    <p className="font-mono text-sm font-semibold text-foreground">
+                      {goal.title}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {goal.description}
+                    </p>
+                  </div>
+                  <CheckCircle2 className="ml-auto h-4 w-4 text-green-500 shrink-0 mt-0.5" />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <div
-            ref={scrollRef}
-            className={`flex gap-6 overflow-x-auto scrollbar-hide select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={handleMouseLeave}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onTouchStart={() => setIsPaused(true)}
-            onTouchEnd={() => setIsPaused(false)}
-          >
-            {duplicatedFeatures.map((feature, index) => (
-              <div
-                key={index}
-                className="group relative flex-shrink-0 w-[320px] rounded-2xl border border-border/60 bg-card/50 p-8 transition-all hover:border-border hover:bg-card"
-              >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-secondary">
-                  <feature.icon className="h-6 w-6 text-foreground" />
-                </div>
-                <h3 className="font-mono text-lg font-semibold">
-                  {feature.title}
-                </h3>
-                <p className="mt-2 text-muted-foreground text-sm">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+          {/* Non-Goals */}
+          <div className="rounded-2xl border border-red-500/20 bg-[#141414] overflow-hidden">
+            <div className="flex items-center gap-3 border-b border-red-500/20 bg-red-500/5 px-6 py-4">
+              <XCircle className="h-5 w-5 text-red-400" />
+              <h3 className="font-mono text-sm font-semibold text-red-400 uppercase tracking-wider">
+                Non-Goals
+              </h3>
+              <span className="ml-auto rounded-full border border-red-500/30 bg-red-500/10 px-2 py-0.5 text-[10px] font-mono text-red-400">
+                MVP
+              </span>
+            </div>
+            <ul className="divide-y divide-border/40">
+              {nonGoals.map((item) => (
+                <li key={item.number} className="flex items-start gap-4 px-6 py-5">
+                  <span className="font-mono text-xs font-bold text-red-500/50 mt-0.5 w-4 shrink-0">
+                    {item.number}
+                  </span>
+                  <div>
+                    <p className="font-mono text-sm font-semibold text-foreground">
+                      {item.title}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                  <XCircle className="ml-auto h-4 w-4 text-red-500/60 shrink-0 mt-0.5" />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
