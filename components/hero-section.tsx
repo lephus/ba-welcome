@@ -4,22 +4,13 @@ import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
-  FileText,
-  CheckCircle2,
-  Zap,
-  TrendingUp,
   Users,
-  Brain,
-  Globe,
-  Clock,
-  Activity,
-  Search,
-  Shield,
-  Link2,
+  Building2,
+  Briefcase,
+  BarChart2,
 } from "lucide-react";
 
 export function HeroSection() {
-  const [codeLineIndex, setCodeLineIndex] = useState(0);
   const [displayedText1, setDisplayedText1] = useState("");
   const [displayedText2, setDisplayedText2] = useState("");
   const [isTypingDone, setIsTypingDone] = useState(false);
@@ -27,39 +18,6 @@ export function HeroSection() {
 
   const text1 = "Analyze smarter.";
   const text2 = "Trace everything.";
-
-  const codeLines = [
-    "# Alex — Senior Business Analyst (Orchestrator)",
-    "agent:",
-    "  metadata:",
-    "    name: Alex",
-    "    title: Senior Business Analyst",
-    '    icon: "\ud83c\udfaf"',
-    "",
-    "  persona:",
-    "    role: Main coordinator and decision maker",
-    "    identity: 10+ years BA experience",
-    "",
-    "# Emma — Requirements Agent",
-    "agent:",
-    "  metadata:",
-    "    name: Emma",
-    "    title: Requirements Agent",
-    '    icon: "\ud83d\udccb"',
-    "",
-    "  persona:",
-    "    role: Requirements Analysis Specialist",
-    "    principles:",
-    "      - Check consistency and clarity",
-    "      - Flag duplicates and conflicts",
-    "",
-    "# Sarah — Stakeholder Agent",
-    "agent:",
-    "  metadata:",
-    "    name: Sarah",
-    "    title: Stakeholder Agent",
-    '    icon: "\ud83d\udc65"',
-  ];
 
   useEffect(() => {
     let currentIndex = 0;
@@ -80,13 +38,6 @@ export function HeroSection() {
 
     return () => clearInterval(typeInterval);
   }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCodeLineIndex((prev) => (prev + 1) % codeLines.length);
-    }, 800);
-    return () => clearInterval(interval);
-  }, [codeLines.length]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -253,15 +204,6 @@ export function HeroSection() {
     };
   }, []);
 
-  const chartData = [
-    { label: "Requirements", value: 45, color: "#10b981" },
-    { label: "Stakeholders", value: 30, color: "#3b82f6" },
-    { label: "Compliance", value: 25, color: "#a855f7" },
-  ];
-
-  const total = chartData.reduce((sum, item) => sum + item.value, 0);
-  let cumulativePercent = 0;
-
   return (
     <section className="relative overflow-hidden pt-20 pb-10 sm:pt-28 sm:pb-16 lg:pt-36">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
@@ -311,7 +253,12 @@ export function HeroSection() {
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl lg:text-2xl">
             An AI-powered workspace that transforms scattered requirements,
             interviews, and stakeholder conversations into a traceable,
-            structured knowledge graph.
+            structured knowledge graph for Business Analysts.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground/70 sm:text-lg">
+            Designed for BAs managing complex projects — BA Workspace unifies
+            documents, conversations, and decisions into a living system that
+            ensures traceability, consistency, and clarity.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -328,7 +275,7 @@ export function HeroSection() {
               asChild
             >
               <a
-                href="https://github.com/lephus/ba-workspace"
+                href="https://docs.businessanalysis.io"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -341,382 +288,90 @@ export function HeroSection() {
         <div className="mt-20 relative">
           <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20 blur-3xl opacity-50" />
 
-          <div className="relative overflow-x-auto pb-4 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
-            <div className="relative rounded-xl border border-border/60 bg-[#141414] backdrop-blur-sm overflow-hidden shadow-2xl min-w-[900px] lg:min-w-0">
-              <div className="flex items-center justify-between border-b border-border/60 px-4 py-3 bg-[#1a1a1a]">
-                <div className="flex items-center gap-3">
-                  <div className="flex gap-1.5">
-                    <div className="h-3 w-3 rounded-full bg-red-500/80" />
-                    <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-                    <div className="h-3 w-3 rounded-full bg-green-500/80" />
-                  </div>
-                  <span className="text-xs text-muted-foreground font-mono">
-                    ba workspace — analysis dashboard
-                  </span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Globe className="h-3 w-3" />
-                    <span>Project: CRM v2</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <Clock className="h-3 w-3" />
-                    <span>5 agents active</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                    <span className="text-xs text-accent">Live</span>
-                  </div>
+          <div className="relative">
+            <div className="relative rounded-xl border border-border/60 bg-[#141414] backdrop-blur-sm overflow-hidden shadow-2xl">
+              {/* Header bar */}
+              <div className="flex items-center justify-between border-b border-border/60 px-6 py-4 bg-[#1a1a1a]">
+                <div className="flex items-center gap-2">
+                  <BarChart2 className="h-4 w-4 text-accent" />
+                  <span className="font-mono text-sm font-semibold">Who Are We Serving</span>
+                  <span className="ml-2 rounded-full border border-accent/40 bg-accent/10 px-2 py-0.5 text-[10px] font-mono text-accent">ICP</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 gap-4 p-4 border-b border-border/60 bg-[#181818]">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                  <div className="p-2 rounded-lg bg-green-500/10">
-                    <Activity className="h-4 w-4 text-green-400" />
+              <div className="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-border/60">
+                {/* Primary ICP */}
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Users className="h-4 w-4 text-accent" />
+                    <h3 className="font-mono text-xs font-semibold text-accent uppercase tracking-wider">Primary ICP</h3>
                   </div>
-                  <div>
-                    <span className="text-lg font-mono font-bold">24</span>
-                    <p className="text-[10px] text-muted-foreground">
-                      Requirements
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                  <div className="p-2 rounded-lg bg-blue-500/10">
-                    <Users className="h-4 w-4 text-blue-400" />
-                  </div>
-                  <div>
-                    <span className="text-lg font-mono font-bold">6</span>
-                    <p className="text-[10px] text-muted-foreground">
-                      Stakeholders
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                  <div className="p-2 rounded-lg bg-purple-500/10">
-                    <Shield className="h-4 w-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <span className="text-lg font-mono font-bold">87%</span>
-                    <p className="text-[10px] text-muted-foreground">
-                      BABOK Score
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                  <div className="p-2 rounded-lg bg-accent/10">
-                    <Link2 className="h-4 w-4 text-accent" />
-                  </div>
-                  <div>
-                    <span className="text-lg font-mono font-bold">3</span>
-                    <p className="text-[10px] text-muted-foreground">
-                      Missing Links
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-4 divide-x divide-border/60 min-h-[420px]">
-                <div className="p-5">
-                  <h3 className="text-sm font-medium text-muted-foreground mb-4">
-                    Recent Analyses
-                  </h3>
-                  <div className="space-y-2">
+                  <ul className="space-y-3">
                     {[
-                      {
-                        doc: "requirements-v2.pdf",
-                        status: "success",
-                        time: "2m ago",
-                        agent: "Alex",
-                        pages: "12 pages",
-                      },
-                      {
-                        doc: "stakeholder-notes.docx",
-                        status: "success",
-                        time: "15m ago",
-                        agent: "Sarah",
-                        pages: "8 pages",
-                      },
-                      {
-                        doc: "compliance-review.pdf",
-                        status: "building",
-                        time: "Just now",
-                        agent: "David",
-                        pages: "6 pages",
-                      },
-                      {
-                        doc: "user-stories.txt",
-                        status: "success",
-                        time: "1h ago",
-                        agent: "Emma",
-                        pages: "4 pages",
-                      },
-                      {
-                        doc: "rtm-matrix.xlsx",
-                        status: "success",
-                        time: "2h ago",
-                        agent: "Paul",
-                        pages: "3 pages",
-                      },
-                      {
-                        doc: "interview-notes.docx",
-                        status: "success",
-                        time: "3h ago",
-                        agent: "Alex",
-                        pages: "10 pages",
-                      },
-                    ].map((analysis, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center justify-between p-2.5 rounded-lg bg-[#1c1c1c] border border-border/40"
-                      >
-                        <div className="flex items-center gap-2">
-                          {analysis.status === "success" ? (
-                            <CheckCircle2 className="h-3.5 w-3.5 text-green-500" />
-                          ) : (
-                            <div className="h-3.5 w-3.5 rounded-full border-2 border-accent border-t-transparent animate-spin" />
-                          )}
-                          <div>
-                            <div className="flex items-center gap-1.5">
-                              <FileText className="h-3 w-3 text-muted-foreground" />
-                              <span className="text-xs font-mono">
-                                {analysis.doc}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="text-[10px] text-muted-foreground">
-                                {analysis.agent}
-                              </span>
-                              <span className="text-[10px] text-muted-foreground/60 font-mono">
-                                {analysis.pages}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <span className="text-[10px] text-muted-foreground">
-                          {analysis.time}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="p-5">
-                  <h3 className="text-sm font-medium text-muted-foreground mb-4">
-                    Agent Coverage
-                  </h3>
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-36 h-36">
-                      <svg
-                        viewBox="0 0 100 100"
-                        className="w-full h-full -rotate-90"
-                      >
-                        {chartData.map((item, index) => {
-                          const percent = (item.value / total) * 100;
-                          const dashArray = `${percent * 2.51327} ${251.327 - percent * 2.51327}`;
-                          const dashOffset = -cumulativePercent * 2.51327;
-                          cumulativePercent += percent;
-                          return (
-                            <circle
-                              key={index}
-                              cx="50"
-                              cy="50"
-                              r="40"
-                              fill="none"
-                              stroke={item.color}
-                              strokeWidth="12"
-                              strokeDasharray={dashArray}
-                              strokeDashoffset={dashOffset}
-                              className="transition-all duration-1000"
-                            />
-                          );
-                        })}
-                      </svg>
-                      <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-2xl font-mono font-bold">48</span>
-                        <span className="text-[10px] text-muted-foreground">
-                          findings
-                        </span>
-                      </div>
-                    </div>
-                    <div className="mt-4 flex flex-wrap justify-center gap-3">
-                      {chartData.map((item, index) => (
-                        <div key={index} className="flex items-center gap-1.5">
-                          <div
-                            className="w-2 h-2 rounded-full"
-                            style={{ backgroundColor: item.color }}
-                          />
-                          <span className="text-[10px] text-muted-foreground">
-                            {item.label}
-                          </span>
-                          <span className="text-[10px] font-mono text-foreground">
-                            {item.value}%
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="mt-6 space-y-3">
-                    <h4 className="text-xs font-medium text-muted-foreground">
-                      Analysis Progress
-                    </h4>
-                    {[
-                      {
-                        label: "Requirements",
-                        value: 92,
-                        color: "bg-green-500",
-                      },
-                      {
-                        label: "Stakeholders",
-                        value: 78,
-                        color: "bg-blue-500",
-                      },
-                      {
-                        label: "Compliance",
-                        value: 65,
-                        color: "bg-purple-500",
-                      },
+                      "Business Analysts in software development, digital transformation, or system implementation.",
+                      "BAs on multi-phase projects with multiple stakeholders.",
+                      "BA teams managing requirements across distributed organizations.",
+                      "Consultancies delivering BA services to multiple clients.",
                     ].map((item, i) => (
-                      <div key={i} className="space-y-1">
-                        <div className="flex justify-between text-[10px]">
-                          <span className="text-muted-foreground">
-                            {item.label}
-                          </span>
-                          <span className="font-mono">{item.value}%</span>
-                        </div>
-                        <div className="h-1.5 bg-[#1c1c1c] rounded-full overflow-hidden">
-                          <div
-                            className={`h-full ${item.color} rounded-full transition-all duration-1000`}
-                            style={{ width: `${item.value}%` }}
-                          />
-                        </div>
-                      </div>
+                      <li key={i} className="flex items-start gap-2.5 text-xs text-muted-foreground">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                        {item}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
-                <div className="p-5">
-                  <h3 className="text-sm font-medium text-muted-foreground mb-4">
-                    Document Insights
-                  </h3>
-                  <div className="space-y-3">
-                    <div className="p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <FileText className="h-4 w-4 text-blue-400" />
-                          <span className="text-xs text-muted-foreground">
-                            Documents
-                          </span>
-                        </div>
-                        <span className="text-xs text-green-400 flex items-center gap-1">
-                          <TrendingUp className="h-3 w-3" />
-                          +3 new
-                        </span>
-                      </div>
-                      <span className="text-xl font-mono font-bold">14</span>
-                    </div>
-                    <div className="p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <Search className="h-4 w-4 text-purple-400" />
-                          <span className="text-xs text-muted-foreground">
-                            Issues Found
-                          </span>
-                        </div>
-                        <span className="text-xs text-yellow-400 flex items-center gap-1">
-                          7 open
-                        </span>
-                      </div>
-                      <span className="text-xl font-mono font-bold">23</span>
-                    </div>
-                    <div className="p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <Zap className="h-4 w-4 text-accent" />
-                          <span className="text-xs text-muted-foreground">
-                            AI Conversations
-                          </span>
-                        </div>
-                        <span className="text-xs text-green-400 flex items-center gap-1">
-                          <TrendingUp className="h-3 w-3" />
-                          +12%
-                        </span>
-                      </div>
-                      <span className="text-xl font-mono font-bold">156</span>
-                    </div>
-                    <div className="p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <Users className="h-4 w-4 text-cyan-400" />
-                          <span className="text-xs text-muted-foreground">
-                            Stakeholders Mapped
-                          </span>
-                        </div>
-                      </div>
-                      <span className="text-xl font-mono font-bold">18</span>
-                    </div>
-                    <div className="p-3 rounded-lg bg-[#1c1c1c] border border-border/40">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <Brain className="h-4 w-4 text-orange-400" />
-                          <span className="text-xs text-muted-foreground">
-                            SMART Score
-                          </span>
-                        </div>
-                      </div>
-                      <span className="text-xl font-mono font-bold">91%</span>
-                    </div>
+                {/* Secondary ICP */}
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Briefcase className="h-4 w-4 text-blue-400" />
+                    <h3 className="font-mono text-xs font-semibold text-blue-400 uppercase tracking-wider">Secondary ICP</h3>
                   </div>
+                  <ul className="space-y-3">
+                    {[
+                      "Product Managers who perform BA functions.",
+                      "Project Managers responsible for requirements management.",
+                      "Enterprise Architects who need requirements traceability.",
+                      "Business Analysis Centers of Excellence (CoE).",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-xs text-muted-foreground">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <div className="p-5">
-                  <h3 className="text-sm font-medium text-muted-foreground mb-4">
-                    Agent Configuration
-                  </h3>
-                  <div className="rounded-lg bg-[#0d0d0d] border border-border/40 p-3 font-mono text-[11px] h-[340px] overflow-hidden">
-                    <div
-                      className="transition-transform duration-300 ease-out"
-                      style={{
-                        transform: `translateY(-${codeLineIndex * 22}px)`,
-                      }}
-                    >
-                      {[...codeLines, ...codeLines].map((line, i) => (
-                        <div
-                          key={i}
-                          className={`h-[22px] leading-[22px] ${
-                            line.startsWith("#")
-                              ? "text-green-400 italic"
-                              : line.startsWith("agent:")
-                                ? "text-blue-400"
-                                : line.includes("name:")
-                                  ? "text-accent"
-                                  : line.includes("title:")
-                                    ? "text-pink-400"
-                                    : line.includes("icon:")
-                                      ? "text-yellow-400"
-                                      : line.includes("role:") ||
-                                          line.includes("identity:")
-                                        ? "text-purple-400"
-                                        : line.startsWith("    -")
-                                          ? "text-cyan-400"
-                                          : "text-muted-foreground"
-                          }`}
-                        >
-                          {line || " "}
-                        </div>
+                {/* Company Characteristics */}
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Building2 className="h-4 w-4 text-purple-400" />
+                    <h3 className="font-mono text-xs font-semibold text-purple-400 uppercase tracking-wider">Company Profile</h3>
+                  </div>
+                  <ul className="space-y-3 mb-5">
+                    {[
+                      "50–1,000 employees.",
+                      "Concurrent projects with complex stakeholder ecosystems.",
+                      "High rework costs due to requirement defects.",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-xs text-muted-foreground">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-purple-500 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-4">
+                    <p className="font-mono text-[10px] text-muted-foreground/60 uppercase tracking-wider mb-2">Industries</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {["Technology", "Healthcare", "Finance", "Government", "Consulting"].map((tag) => (
+                        <span key={tag} className="rounded-md border border-border/60 bg-secondary/50 px-2 py-0.5 text-[10px] font-mono text-muted-foreground">
+                          {tag}
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="lg:hidden flex justify-center mt-2">
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span>Scroll to explore</span>
-              <ArrowRight className="h-3 w-3 animate-pulse" />
             </div>
           </div>
         </div>

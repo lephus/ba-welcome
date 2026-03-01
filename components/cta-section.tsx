@@ -53,7 +53,7 @@ export function CTASection() {
               asChild
             >
               <a
-                href="https://github.com/lephus/ba-workspace"
+                href="https://docs.businessanalysis.io"
                 target="_blank"
                 rel="noopener noreferrer"
               >
