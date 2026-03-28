@@ -1,49 +1,49 @@
-import { Brain, FolderOpen, GitBranch } from "lucide-react";
+import { FileQuestion, Database, BrainCircuit } from "lucide-react";
 
-const features = [
+const problems = [
   {
-    icon: Brain,
-    color: "text-accent",
-    borderColor: "border-accent/20",
-    bgColor: "bg-accent/5",
-    iconBg: "bg-accent/10",
-    title: "AI-Powered Document Intelligence",
-    description: "Automatic categorization and knowledge extraction from BA artifacts.",
+    icon: FileQuestion,
+    color: "text-red-400",
+    borderColor: "border-red-500/20",
+    bgColor: "bg-red-500/5",
+    iconBg: "bg-red-500/10",
+    title: "1. Fragmented Knowledge",
+    description: "Crucial context is scattered across disparate platforms.",
     items: [
-      { label: "Auto-categorize", detail: "Requirements, Analysis, Diagrams, Specifications." },
-      { label: "Extract entities", detail: "Stakeholders, business rules, processes, requirements." },
-      { label: "Generate dynamic tags", detail: "Based on document content." },
-      { label: "Create relationships", detail: "In the Knowledge Graph." },
+      { label: "Lost Context", detail: "Scattered in Word docs, PDFs, Slack threads, and emails." },
+      { label: "Isolated Information", detail: "Siloed in personal spreadsheets and notes." },
+      { label: "Hard to Find", detail: "Isolated knowledge bases without unified search." },
+      { label: "Knowledge Drain", detail: "Individual expertise leaves when the project ends." },
     ],
   },
   {
-    icon: FolderOpen,
-    color: "text-blue-400",
-    borderColor: "border-blue-500/20",
-    bgColor: "bg-blue-500/5",
-    iconBg: "bg-blue-500/10",
-    title: "Smart Document Hub",
-    description: "Intelligent document management system.",
+    icon: Database,
+    color: "text-orange-400",
+    borderColor: "border-orange-500/20",
+    bgColor: "bg-orange-500/5",
+    iconBg: "bg-orange-500/10",
+    title: "2. Missing Reasoning",
+    description: "Tools store information, but fail to capture the underlying reasoning.",
     items: [
-      { label: "View Modes", detail: "Grid (visual), List (detailed), Timeline (chronological)." },
-      { label: "Smart Folders", detail: "All, Recently Used, Favorites, Uncategorized, Untagged, Trash." },
-      { label: "AI Hover Overlay", detail: "Summary, risk detection, action items, confidence score." },
-      { label: "Search & Version Control", detail: "Semantic search and document evolution tracking." },
+      { label: "Static Storage", detail: "Traditional stack (Excel, Notion, Jira) just holds text." },
+      { label: "RAG Limitations", detail: "Standard AI retrieval lacks structured knowledge." },
+      { label: "No Memory", detail: "Tools forget past decisions and the 'why' behind them." },
+      { label: "Rigid Workflows", detail: "Inability to adapt processes to complex problems." },
     ],
   },
   {
-    icon: GitBranch,
+    icon: BrainCircuit,
     color: "text-purple-400",
     borderColor: "border-purple-500/20",
     bgColor: "bg-purple-500/5",
     iconBg: "bg-purple-500/10",
-    title: "Knowledge Graph & Traceability",
-    description: "Visual relationship mapping across all BA artifacts.",
+    title: "3. Analysis is Cognitive",
+    description: "Analysis is structured cognitive work, requiring more than data retrieval.",
     items: [
-      { label: "Full chains", detail: "Stakeholder → Requirement → Process → Deliverable." },
-      { label: "Interactive graph", detail: "Showing dependencies and relationships." },
-      { label: "Impact analysis", detail: "When requirements change." },
-      { label: "Gap detection & RTM", detail: "Missing links and Requirements Traceability Matrix export." },
+      { label: "Frameworks", detail: "Requires applying specific analytical frameworks." },
+      { label: "Methodologies", detail: "Methods are needed to synthesize abstract ideas." },
+      { label: "Reasoning Patterns", detail: "BAs use complex, multi-step logical deductions." },
+      { label: "Beyond Search", detail: "Requires generation, synthesis, and deep processing." },
     ],
   },
 ];
@@ -54,34 +54,34 @@ export function StatsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-12">
           <p className="font-mono text-xs font-semibold uppercase tracking-wider text-accent mb-3">
-            Key Features
+            The Problem
           </p>
           <h2 className="font-mono text-2xl font-bold tracking-tight sm:text-3xl text-balance">
-            Everything a BA needs, in one place
+            Business analysis knowledge is fragmented
           </h2>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-3">
-          {features.map((feature) => (
+          {problems.map((problem) => (
             <div
-              key={feature.title}
-              className={`rounded-2xl border ${feature.borderColor} ${feature.bgColor} bg-[#141414] overflow-hidden`}
+              key={problem.title}
+              className={`rounded-2xl border ${problem.borderColor} ${problem.bgColor} bg-[#141414] overflow-hidden`}
             >
-              <div className={`border-b ${feature.borderColor} px-6 py-4 flex items-center gap-3`}>
-                <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${feature.iconBg}`}>
-                  <feature.icon className={`h-4 w-4 ${feature.color}`} />
+              <div className={`border-b ${problem.borderColor} px-6 py-4 flex items-center gap-3`}>
+                <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${problem.iconBg}`}>
+                  <problem.icon className={`h-4 w-4 ${problem.color}`} />
                 </div>
-                <h3 className={`font-mono text-sm font-semibold ${feature.color}`}>
-                  {feature.title}
+                <h3 className={`font-mono text-sm font-semibold ${problem.color}`}>
+                  {problem.title}
                 </h3>
               </div>
 
               <div className="px-6 py-5">
-                <p className="text-xs text-muted-foreground mb-4">{feature.description}</p>
+                <p className="text-xs text-muted-foreground mb-4">{problem.description}</p>
                 <ul className="space-y-3">
-                  {feature.items.map((item, i) => (
+                  {problem.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <span className={`mt-1.5 h-1.5 w-1.5 rounded-full ${feature.color.replace("text-", "bg-")} shrink-0`} />
+                      <span className={`mt-1.5 h-1.5 w-1.5 rounded-full ${problem.color.replace("text-", "bg-")} shrink-0`} />
                       <span className="text-xs text-muted-foreground">
                         <span className="font-semibold text-foreground/80">{item.label}:</span>{" "}
                         {item.detail}

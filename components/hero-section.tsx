@@ -4,10 +4,9 @@ import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
-  Users,
-  Building2,
-  Briefcase,
-  BarChart2,
+  Database,
+  Network,
+  Layers,
 } from "lucide-react";
 
 export function HeroSection() {
@@ -16,8 +15,8 @@ export function HeroSection() {
   const [isTypingDone, setIsTypingDone] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const text1 = "Analyze smarter.";
-  const text2 = "Trace everything.";
+  const text1 = "AI Knowledge Operating System";
+  const text2 = "for Business Analysis";
 
   useEffect(() => {
     let currentIndex = 0;
@@ -220,14 +219,14 @@ export function HeroSection() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Now in early access — Powered by Gemini AI
+            Open-source AI-native infrastructure for business analysis
           </div>
 
           <h1 className="font-mono text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl relative">
             <span className="invisible" aria-hidden="true">
-              <span className="text-balance">Analyze smarter.</span>
+              <span className="text-balance">AI Knowledge Operating System</span>
               <br />
-              <span className="text-balance">Trace everything.</span>
+              <span className="text-balance">for Business Analysis</span>
             </span>
 
             <span className="absolute inset-0 flex flex-col items-center">
@@ -241,9 +240,8 @@ export function HeroSection() {
                 {displayedText2}
                 {displayedText2 !== "" && (
                   <span
-                    className={`inline-block w-[3px] h-[0.9em] bg-accent ml-1 ${
-                      isTypingDone ? "animate-blink" : "animate-pulse"
-                    }`}
+                    className={`inline-block w-[3px] h-[0.9em] bg-accent ml-1 ${isTypingDone ? "animate-blink" : "animate-pulse"
+                      }`}
                   />
                 )}
               </span>
@@ -251,22 +249,18 @@ export function HeroSection() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl lg:text-2xl">
-            An AI-powered workspace that transforms scattered requirements,
-            interviews, and stakeholder conversations into a traceable,
-            structured knowledge graph for Business Analysts.
+            BusinessAnalysis.io is an AI Knowledge Operating System that transforms scattered knowledge into a structured, actionable foundation for business analysis.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground/70 sm:text-lg">
-            Designed for BAs managing complex projects — BA Workspace unifies
-            documents, conversations, and decisions into a living system that
-            ensures traceability, consistency, and clarity.
+            BusinessAnalysis.io builds the infrastructure for AI-assisted analytical work.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="w-full sm:w-auto">
-              <a href="https://github.com/lephus/ba-workspace" target="_blank" rel="noopener noreferrer">
-                Get started
+            <Button size="lg" className="w-full sm:w-auto" asChild>
+              <a href="mailto:hoang@businessanalysis.io" target="_blank" rel="noopener noreferrer">
+                Contact Us
+                <ArrowRight className="ml-2 h-4 w-4" />
               </a>
-              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               size="lg"
@@ -293,83 +287,73 @@ export function HeroSection() {
               {/* Header bar */}
               <div className="flex items-center justify-between border-b border-border/60 px-6 py-4 bg-[#1a1a1a]">
                 <div className="flex items-center gap-2">
-                  <BarChart2 className="h-4 w-4 text-accent" />
-                  <span className="font-mono text-sm font-semibold">Who Are We Serving</span>
-                  <span className="ml-2 rounded-full border border-accent/40 bg-accent/10 px-2 py-0.5 text-[10px] font-mono text-accent">ICP</span>
+                  <Layers className="h-4 w-4 text-accent" />
+                  <span className="font-mono text-sm font-semibold">Traditional BA Stack vs. BAWS</span>
                 </div>
               </div>
 
-              <div className="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-border/60">
-                {/* Primary ICP */}
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Users className="h-4 w-4 text-accent" />
-                    <h3 className="font-mono text-xs font-semibold text-accent uppercase tracking-wider">Primary ICP</h3>
+              <div className="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-border/60">
+                {/* Traditional Stack */}
+                <div className="p-8">
+                  <div className="flex items-center gap-2 mb-6">
+                    <Database className="h-5 w-5 text-muted-foreground/60" />
+                    <h3 className="font-mono text-sm font-semibold text-muted-foreground uppercase tracking-wider">Traditional RAG-based Stack</h3>
                   </div>
-                  <ul className="space-y-3">
-                    {[
-                      "Business Analysts in software development, digital transformation, or system implementation.",
-                      "BAs on multi-phase projects with multiple stakeholders.",
-                      "BA teams managing requirements across distributed organizations.",
-                      "Consultancies delivering BA services to multiple clients.",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs text-muted-foreground">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
-                        {item}
-                      </li>
-                    ))}
+                  <ul className="space-y-5">
+                    <li className="flex items-start gap-4 text-sm text-muted-foreground">
+                      <div className="mt-1 h-1.5 w-1.5 rounded-full bg-red-500/60 shrink-0" />
+                      <div>
+                        <span className="font-semibold text-foreground/80 block mb-1">Retrieval without context</span>
+                        Searches paragraphs without understanding the underlying business domain or intent.
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-4 text-sm text-muted-foreground">
+                      <div className="mt-1 h-1.5 w-1.5 rounded-full bg-red-500/60 shrink-0" />
+                      <div>
+                        <span className="font-semibold text-foreground/80 block mb-1">Static documents</span>
+                        Information is locked in PDFs, Word docs, and isolated knowledge bases.
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-4 text-sm text-muted-foreground">
+                      <div className="mt-1 h-1.5 w-1.5 rounded-full bg-red-500/60 shrink-0" />
+                      <div>
+                        <span className="font-semibold text-foreground/80 block mb-1">No institutional memory</span>
+                        When a project ends, the analytical reasoning and context are permanently lost.
+                      </div>
+                    </li>
                   </ul>
                 </div>
 
-                {/* Secondary ICP */}
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Briefcase className="h-4 w-4 text-blue-400" />
-                    <h3 className="font-mono text-xs font-semibold text-blue-400 uppercase tracking-wider">Secondary ICP</h3>
+                {/* Knowledge OS */}
+                <div className="p-8 bg-accent/5 relative overflow-hidden">
+                  <div className="absolute -top-12 -right-12 w-48 h-48 bg-accent/10 blur-3xl rounded-full pointer-events-none" />
+                  <div className="flex items-center gap-2 mb-6 relative z-10">
+                    <Network className="h-5 w-5 text-accent" />
+                    <h3 className="font-mono text-sm font-semibold text-accent uppercase tracking-wider">Structured Knowledge System</h3>
                   </div>
-                  <ul className="space-y-3">
-                    {[
-                      "Product Managers who perform BA functions.",
-                      "Project Managers responsible for requirements management.",
-                      "Enterprise Architects who need requirements traceability.",
-                      "Business Analysis Centers of Excellence (CoE).",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs text-muted-foreground">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
+                  <ul className="space-y-5 relative z-10">
+                    <li className="flex items-start gap-4 text-sm text-muted-foreground">
+                      <div className="mt-1 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                      <div>
+                        <span className="font-semibold text-foreground/90 block mb-1">Self-hosted & Sovereign</span>
+                        Your knowledge base runs locally. Full ownership and privacy over your organization's data.
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-4 text-sm text-muted-foreground">
+                      <div className="mt-1 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                      <div>
+                        <span className="font-semibold text-foreground/90 block mb-1">Open & Extensible workflows</span>
+                        Open-source AI Analyst Agents autonomously navigate and build upon shared capabilities.
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-4 text-sm text-muted-foreground">
+                      <div className="mt-1 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                      <div>
+                        <span className="font-semibold text-foreground/90 block mb-1">Compounding intelligence</span>
+                        Every project enriches your team's analytical reasoning and history.
+                      </div>
+                    </li>
                   </ul>
-                </div>
-
-                {/* Company Characteristics */}
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Building2 className="h-4 w-4 text-purple-400" />
-                    <h3 className="font-mono text-xs font-semibold text-purple-400 uppercase tracking-wider">Company Profile</h3>
-                  </div>
-                  <ul className="space-y-3 mb-5">
-                    {[
-                      "50–1,000 employees.",
-                      "Concurrent projects with complex stakeholder ecosystems.",
-                      "High rework costs due to requirement defects.",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs text-muted-foreground">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-purple-500 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-4">
-                    <p className="font-mono text-[10px] text-muted-foreground/60 uppercase tracking-wider mb-2">Industries</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {["Technology", "Healthcare", "Finance", "Government", "Consulting"].map((tag) => (
-                        <span key={tag} className="rounded-md border border-border/60 bg-secondary/50 px-2 py-0.5 text-[10px] font-mono text-muted-foreground">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

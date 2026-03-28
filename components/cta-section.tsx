@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export function CTASection() {
   return (
@@ -25,16 +25,29 @@ export function CTASection() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-mono text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Ready to transform your BA workflow?
+            Ready to deploy your BAWS?
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Join Business Analysts who are already working smarter with
-            AI-powered document analysis. Start your free workspace today.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col items-center gap-4 text-left max-w-md mx-auto">
+            <p className="text-center text-lg text-muted-foreground mb-4">
+              Join the community of Business Analysts building with open-source AI. Self-host your intelligence engine today.
+            </p>
+            <ul className="space-y-4 font-mono text-sm text-foreground">
+              {[
+                "Consolidate scattered analytical artifacts",
+                "Deploy context-aware AI Analyst Agents",
+                "Build compounding institutional memory",
+              ].map((bullet, i) => (
+                <li key={i} className="flex items-start gap-3 bg-secondary/20 border border-border/40 p-3 rounded-lg w-full">
+                  <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               size="lg"
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto font-mono"
               asChild
             >
               <a
@@ -42,14 +55,14 @@ export function CTASection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Start free workspace
+                Deploy your workspace
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto bg-transparent"
+              className="w-full sm:w-auto bg-transparent font-mono"
               asChild
             >
               <a
@@ -57,7 +70,7 @@ export function CTASection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View documentation
+                Read documentation
               </a>
             </Button>
           </div>
