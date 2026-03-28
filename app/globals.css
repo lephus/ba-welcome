@@ -123,6 +123,46 @@
   }
 }
 
+/* Custom scrollbar — dark mode aesthetic */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+}
+
+/* Webkit scrollbar (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: oklch(0.65 0.18 35 / 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Text selection — accent tint */
+::selection {
+  background: oklch(0.65 0.18 35 / 0.3);
+  color: oklch(0.98 0 0);
+}
+
 /* Add blink animation for cursor */
 @keyframes blink {
   0%,

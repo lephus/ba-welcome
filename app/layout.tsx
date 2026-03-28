@@ -2,10 +2,12 @@
 import { buildMetadata } from "@/config/seo.ioc";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
 import Script from "next/script";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 export const metadata: Metadata = buildMetadata();
@@ -33,6 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SmoothScroll />
           {/* <AppProvider> */}
           <TooltipProvider>
             {children}

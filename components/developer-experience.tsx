@@ -1,207 +1,136 @@
-import { User, Target, AlertCircle, MessageSquare, Zap, Brain, Layers } from "lucide-react";
+import { Bot, Workflow, FileCheck, Database, GitBranch, Terminal, Layers } from "lucide-react";
 
-const goals = [
-  "Maintain clear traceability from stakeholder needs → requirements → deliverables",
-  "Reduce time spent searching for documents, notes, and decisions",
-  "Ensure requirement consistency across multiple project phases",
-  "Quickly validate deliverables against business rules and stakeholder expectations",
-  "Collaborate effectively with distributed teams",
-];
-
-const frustrations = [
-  "Requirements scattered across Word docs, PDFs, Slack threads, and interview notes",
-  "No unified view of stakeholder feedback and how it impacts requirements",
-  "Constant rework due to missed dependencies or conflicting requirements",
-  "Manual cross-checking of requirements against business rules",
-  "Difficulty maintaining Requirements Traceability Matrix (RTM) as projects evolve",
-];
-
-const scenarios = [
+const agents = [
   {
-    number: "01",
-    user: "Alex — Senior BA",
-    title: "Multi-Agent Validation to Catch Conflicts Early",
-    description:
-      "Alex has just completed a 50-page requirements document. Before sending it to stakeholders, Alex runs BA Workspace validation. The system identifies:",
-    findings: [
-      "3 conflicting requirements between Finance and Operations stakeholders",
-      "2 business rules that contradict each other",
-      "5 requirements that don't trace to any stakeholder need",
-      "12 requirements that need more specificity",
+    name: "Requirements Engineer",
+    role: "BABOK-aligned validation",
+    description: "Evaluates requirements for clarity, completeness, and testability. Flags contradictions across the entire knowledge domain.",
+    capabilities: [
+      "Ambiguity detection",
+      "Acceptance criteria generation",
+      "Traceability validation",
     ],
-    outcome:
-      "Alex fixes these issues in 30 minutes instead of discovering them in a painful stakeholder meeting later.",
-    icon: Zap,
-    color: "text-accent",
-    bgColor: "bg-accent/10",
-  },
-  {
-    number: "02",
-    user: "Minh — Junior BA",
-    title: "Using AI to Learn Best Practices",
-    description:
-      "Minh is new to BA work and writes requirements that are too vague. Emma (Requirements Agent) provides inline feedback:",
-    findings: [
-      '"This requirement is not measurable. Consider adding success criteria."',
-      '"This requirement contains multiple needs. Consider splitting it."',
-      '"This requirement uses ambiguous language. Be more specific."',
-    ],
-    outcome:
-      "Minh learns BABOK principles through real-time coaching, improving quality with each iteration.",
-    icon: Brain,
+    icon: FileCheck,
     color: "text-blue-400",
     bgColor: "bg-blue-500/10",
   },
   {
-    number: "03",
-    user: "Lan — BA Lead",
-    title: "Knowledge Graph for Impact Analysis",
-    description:
-      "A key stakeholder requests a change to a core process. Lan uses the Knowledge Graph to instantly see:",
-    findings: [
-      "15 requirements linked to this process",
-      "8 deliverables that will be affected",
-      "12 other stakeholders who need to be consulted",
-      "3 downstream projects that depend on this",
+    name: "Process Architect",
+    role: "Workflow logic analysis",
+    description: "Transforms text into structured logic. Analyzes process flows for bottlenecks, edge cases, and missing error handling.",
+    capabilities: [
+      "State machine extraction",
+      "Process optimization",
+      "Edge case identification",
     ],
-    outcome:
-      "Lan presents a complete impact assessment in 10 minutes instead of spending hours manually tracing dependencies.",
-    icon: Layers,
+    icon: Workflow,
     color: "text-purple-400",
     bgColor: "bg-purple-500/10",
+  },
+  {
+    name: "System Modeler",
+    role: "Data & architecture design",
+    description: "Extracts entities, relationships, and business rules to build consistent semantic models of the organization.",
+    capabilities: [
+      "Entity-relationship mapping",
+      "Taxonomy generation",
+      "Business rule extraction",
+    ],
+    icon: Database,
+    color: "text-green-400",
+    bgColor: "bg-green-500/10",
   },
 ];
 
 export function DeveloperExperience() {
   return (
     <section
-      id="personas"
+      id="agents"
       className="border-y border-border/40 bg-card/30 py-24 sm:py-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mx-auto max-w-2xl text-center">
           <div className="flex items-center justify-center gap-2 text-sm text-accent">
-            <User className="h-4 w-4" />
+            <Bot className="h-4 w-4" />
             <span className="font-mono uppercase tracking-wider">
-              Personas & User Scenarios
+              Specialized AI Analyst Agents
             </span>
           </div>
           <h2 className="mt-4 font-mono text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Built around how real BAs work
+            A collaborative intelligence network
           </h2>
           <p className="mt-4 text-muted-foreground">
-            BA Workspace is designed from the ground up around the daily
-            challenges of Business Analysts at every level.
+            Rather than a single raw LLM interface, BusinessAnalysis.io is an extensible open-source platform. Route your work through a team of specialized agents, or build and run your own locally.
           </p>
         </div>
 
-        {/* Persona card */}
-        <div className="mt-16 rounded-2xl border border-border/60 bg-[#141414] overflow-hidden">
-          <div className="border-b border-border/60 bg-[#1a1a1a] px-6 py-4 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/20 text-accent font-mono font-bold text-sm">
-              A
-            </div>
-            <div>
-              <p className="font-mono font-semibold text-sm">Alex</p>
-              <p className="text-xs text-muted-foreground">Senior Business Analyst · Da Nang, Vietnam · Age 32</p>
-            </div>
-            <div className="ml-auto hidden sm:block">
-              <span className="rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs text-accent font-mono">
-                Digital transformation & software implementation
-              </span>
-            </div>
-          </div>
-
-          <div className="grid gap-0 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-border/60">
-            {/* Goals */}
-            <div className="p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <Target className="h-4 w-4 text-green-400" />
-                <h3 className="font-mono text-sm font-semibold text-green-400 uppercase tracking-wider">Goals</h3>
+        {/* Platform Architecture Diagram */}
+        <div className="mt-16 rounded-2xl border border-border/60 bg-[#141414] overflow-hidden p-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex-1 space-y-4 w-full">
+              <div className="rounded-xl border border-border/60 bg-[#1a1a1a] p-4 text-center">
+                <Terminal className="h-6 w-6 text-accent mx-auto mb-2" />
+                <h3 className="font-mono text-sm font-semibold text-accent">Agent Runtime</h3>
+                <p className="text-xs text-muted-foreground mt-1">Orchestration & Context Assembly</p>
               </div>
-              <ul className="space-y-3">
-                {goals.map((goal, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
-                    {goal}
-                  </li>
-                ))}
-              </ul>
             </div>
-
-            {/* Frustrations */}
-            <div className="p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <AlertCircle className="h-4 w-4 text-red-400" />
-                <h3 className="font-mono text-sm font-semibold text-red-400 uppercase tracking-wider">Frustrations</h3>
-              </div>
-              <ul className="space-y-3">
-                {frustrations.map((frustration, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0" />
-                    {frustration}
-                  </li>
-                ))}
-              </ul>
+            <GitBranch className="h-8 w-8 text-muted-foreground rotate-90 md:rotate-0" />
+            <div className="flex-[2] grid grid-cols-2 gap-4 w-full">
+              {["Requirements Analysis", "Process Modeling", "Data Architecture", "Strategic Alignment"].map((domain, i) => (
+                <div key={i} className="rounded-xl border border-border/40 bg-secondary/20 p-3 flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-accent/70" />
+                  <span className="font-mono text-xs text-muted-foreground uppercase tracking-wider">{domain}</span>
+                </div>
+              ))}
             </div>
-          </div>
-
-          {/* Problem statement */}
-          <div className="border-t border-border/60 bg-[#111111] px-6 py-5">
-            <div className="flex items-start gap-3">
-              <MessageSquare className="h-4 w-4 text-accent mt-0.5 shrink-0" />
-              <div>
-                <p className="font-mono text-xs font-semibold text-accent uppercase tracking-wider mb-2">Problem Statement</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Alex manages multiple digital transformation projects where requirements come from diverse stakeholders
-                  via interviews, workshops, emails, and meetings. Critical information gets buried in dozens of documents,
-                  making it difficult to validate consistency, trace decisions, and ensure nothing falls through the cracks.
-                  Alex needs a workspace where all BA artifacts are connected, AI helps validate deliverables, and
-                  traceability is automatic — not manual.
-                </p>
+            <GitBranch className="h-8 w-8 text-muted-foreground rotate-90 md:rotate-0" />
+            <div className="flex-1 space-y-4 w-full">
+              <div className="rounded-xl border border-blue-500/30 bg-blue-500/5 p-4 text-center">
+                <Layers className="h-6 w-6 text-blue-400 mx-auto mb-2" />
+                <h3 className="font-mono text-sm font-semibold text-blue-400">Knowledge System</h3>
+                <p className="text-xs text-muted-foreground mt-1">Structured Organization Brain</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Scenarios */}
+        {/* Agent Cards */}
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {scenarios.map((scenario) => (
+          {agents.map((agent, index) => (
             <div
-              key={scenario.number}
-              className="rounded-xl border border-border/60 bg-[#141414] p-6 flex flex-col"
+              key={index}
+              className="rounded-xl border border-border/60 bg-[#141414] p-6 flex flex-col highlight-card"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${scenario.bgColor}`}>
-                  <scenario.icon className={`h-5 w-5 ${scenario.color}`} />
+                <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${agent.bgColor}`}>
+                  <agent.icon className={`h-5 w-5 ${agent.color}`} />
                 </div>
-                <span className={`font-mono text-3xl font-bold ${scenario.color} opacity-30`}>
-                  {scenario.number}
+                <span className={`font-mono text-xs font-bold uppercase tracking-wider ${agent.color} px-2 py-1 rounded-full border border-current/20`}>
+                  Agent
                 </span>
               </div>
 
-              <p className={`font-mono text-xs font-semibold uppercase tracking-wider mb-1 ${scenario.color}`}>
-                {scenario.user}
-              </p>
-              <h3 className="font-mono text-sm font-semibold text-foreground mb-3">
-                {scenario.title}
+              <h3 className="font-mono text-lg font-semibold text-foreground mb-1">
+                {agent.name}
               </h3>
-              <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
-                {scenario.description}
+              <p className={`font-mono text-xs uppercase tracking-wider mb-4 ${agent.color}`}>
+                {agent.role}
+              </p>
+              <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                {agent.description}
               </p>
 
-              <ul className="space-y-1.5 mb-4">
-                {scenario.findings.map((finding, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
-                    <span className={`mt-1 h-1 w-1 rounded-full ${scenario.color.replace("text-", "bg-")} shrink-0`} />
-                    {finding}
-                  </li>
-                ))}
-              </ul>
-
-              <div className={`mt-auto rounded-lg ${scenario.bgColor} px-3 py-2.5`}>
-                <p className={`text-xs font-medium ${scenario.color}`}>{scenario.outcome}</p>
+              <div className="mt-auto">
+                <p className="font-mono text-xs text-muted-foreground mb-3 uppercase tracking-wider">Core Capabilities</p>
+                <ul className="space-y-2">
+                  {agent.capabilities.map((cap, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <span className={`mt-1.5 h-1.5 w-1.5 rounded-full ${agent.color.replace("text-", "bg-")} shrink-0`} />
+                      {cap}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

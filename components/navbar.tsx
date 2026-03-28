@@ -1,7 +1,5 @@
 "use client";
 
-import type React from "react";
-
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -9,22 +7,6 @@ import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleSmoothScroll = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    e.preventDefault();
-    const targetId = href.replace("#", "");
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-    setIsOpen(false);
-  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
@@ -35,30 +17,25 @@ export function Navbar() {
               <span className="text-sm font-bold text-background">BA</span>
             </div>
             <span className="text-lg font-semibold tracking-tight font-mono">
-              BA Workspace
+              BusinessAnalysis.io
             </span>
           </Link>
           <nav className="hidden items-center gap-6 md:flex">
             <a
-              href="#features"
-              onClick={(e) => handleSmoothScroll(e, "#features")}
+              href="#architecture"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
-              Vision
+              Platform
             </a>
             <a
-              href="#personas"
-              onClick={(e) => handleSmoothScroll(e, "#personas")}
+              href="#agents"
               className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
-              Personas
+              Agents
             </a>
           </nav>
         </div>
         <div className="hidden items-center gap-4 md:flex">
-          {/* <Button variant="ghost" size="sm">
-            Sign in
-          </Button> */}
           <Button size="sm" asChild>
             <a href="https://github.com/lephus/ba-workspace" target="_blank" rel="noopener noreferrer">
               Get Started
@@ -77,23 +54,20 @@ export function Navbar() {
         <div className="border-t border-border/40 bg-background md:hidden">
           <nav className="flex flex-col gap-4 px-4 py-6">
             <a
-              href="#features"
-              onClick={(e) => handleSmoothScroll(e, "#features")}
+              href="#architecture"
+              onClick={() => setIsOpen(false)}
               className="text-sm text-muted-foreground cursor-pointer"
             >
-              Vision
+              Platform
             </a>
             <a
-              href="#personas"
-              onClick={(e) => handleSmoothScroll(e, "#personas")}
+              href="#agents"
+              onClick={() => setIsOpen(false)}
               className="text-sm text-muted-foreground cursor-pointer"
             >
-              Personas
+              Agents
             </a>
             <div className="flex flex-col gap-2 pt-4">
-              {/* <Button variant="ghost" size="sm">
-                Sign in
-              </Button> */}
               <Button size="sm">Get Started</Button>
             </div>
           </nav>
